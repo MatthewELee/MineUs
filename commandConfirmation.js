@@ -1,8 +1,13 @@
-const client = require('./bot');  
+const client = require('./bot');
+require('dotenv').config();
+
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 
+const TOKEN = process.env.TOKEN;
+const GUILD_ID = process.env.GUILD_ID;
+const APPLICATION_ID = process.env.APPLICATION_ID;
 // Register the command with Discord
 const commands = [
     new SlashCommandBuilder()
@@ -16,7 +21,7 @@ const commands = [
 
 const rest = new REST({ version: '9' }).setToken(TOKEN);
 
-rest.put(Routes.applicationGuildCommands("YOUR_BOT_ID", GUILD_ID), { body: commands })
+rest.put(Routes.applicationGuildCommands(APPLICATION_ID, GUILD_ID), { body: commands })
     .then(() => console.log("Successfully registered commands."))
     .catch(console.error);
 

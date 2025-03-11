@@ -4,8 +4,10 @@ const WebSocket = require('ws');
 
 require('dotenv').config();
 const TOKEN = process.env.TOKEN;
-require('./confirmation.js');
-require('./commandConfirmation.js'); 
+const GUILD_ID = process.env.GUILD_ID;
+const VC_CHANNEL_ID = process.env.VC_CHANNEL_ID;
+const CONFIRM_CHANNEL_ID = process.env.CONFIRM_CHANNEL_ID;
+const CAPTURE_API_URL = process.env.CAPTURE_API_URL;
 
 const client = new Client({
     intents: [
@@ -16,9 +18,6 @@ const client = new Client({
         GatewayIntentBits.GuildMembers
     ]
 });
-// Export client for use in other files
-module.exports = client;  
-
 // Stores Among Us name -> Discord member mappings
 let playerMapping = {};
 
@@ -91,3 +90,9 @@ async function unmutePlayer(amongUsName) {
 }
 
 client.login(TOKEN);
+
+// Export client for use in other files
+module.exports = client;  
+
+require('./confirmation.js');
+require('./commandConfirmation.js'); 
