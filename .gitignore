@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Log files
+*.log
+
+# IDE/editor settings
+.vscode/
+.idea/
+
+# npm debug files
+npm-debug.log*
+
+# build output directories
+/dist
+/build
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore all files from the .git folder
+*.swp
+*.swo
